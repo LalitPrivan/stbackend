@@ -30,16 +30,23 @@ class UserRegistrationView(APIView):
     
 
 class UserLoginView(APIView):
-    renderer_classes=[UserRenderer]
-    def post(self,request,format=None):
-        serializer=UserLoginSerializers(data=request.data)
+    renderer_classes = [UserRenderer]
+
+    def post(self, request, format=None):
+        serializer = UserLoginSerializers(data=request.data)
         serializer.is_valid(raise_exception=True)
-        email=serializer.data.get('email')
-        password=serializer.data.get('password')
-        user=authenticate(email=email,password=password)
+        email = serializer.data.get('email')
+        password = serializer.data.get('password')
+        user = authenticate(email=email, password=password)
 
         if user is not None:
-            token=get_tokens_for_user(user)
-            return Response({'token':token,'msg':'Login Success'},status=status.HTTP_200_OK)
+            token = get_tokens_for_user(user)
+            is_admin = user.is_admin  # Assuming is_admin is a field in your user model
+            response_data = {
+                'token': token,
+                'is_admin': is_admin,
+                'msg': 'Login Success'
+            }
+            return Response(response_data, status=status.HTTP_200_OK)
         else:
-            return Response({'errors':{'non_field_errors':['Invalid Credentials']}},status=status.HTTP_404_NOT_FOUND)
+            return Response({'errors': {'non_field_errors': ['Invalid Credentials']}}, status=status.HTTP_404_NOT_FOUND)
