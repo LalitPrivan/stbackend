@@ -27,3 +27,20 @@ class TeamA_Q1FetchView(APIView):
         queryset = TeamA_Q1.objects.all()  
         serializer = TeamA_Q1Serializer(queryset, many=True)
         return Response(serializer.data)
+
+
+class TeamA_Q1DeleteView(APIView):
+    def delete(self, request, format=None):
+        try:
+            time = request.data.get('time')
+            if time is not None:
+                queryset = TeamA_Q1.objects.filter(time=time)
+                if queryset.exists():
+                    queryset.delete()
+                    return Response(status=status.HTTP_204_NO_CONTENT)
+                else:
+                    return Response({"message": "No data found for the given time"}, status=status.HTTP_404_NOT_FOUND)
+            else:
+                return Response({"message": "Time parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
