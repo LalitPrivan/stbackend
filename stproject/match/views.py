@@ -24,11 +24,9 @@ class TeamACreateUpadateView(APIView):
 
 class TeamAFetchView(APIView):
     def get(self, request, format=None):
-        # Filter queryset to exclude objects where certain fields are null
         queryset = TeamA.objects.exclude(
             made__isnull=True,
             made_SJN__isnull=True,
-            # Add more fields as needed
         )
         
         serializer = TeamASerializer(queryset, many=True)
