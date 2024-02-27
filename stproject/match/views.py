@@ -2,39 +2,44 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import TeamA_Q1
-from .serializers import TeamA_Q1Serializer
+from .models import TeamA
+from .serializers import TeamASerializer
 
-class TeamA_Q1CreateUpadateView(APIView):
+class TeamACreateUpadateView(APIView):
     def post(self, request, format=None):
         time = request.data.get('time')
 
-        existing_entry = TeamA_Q1.objects.filter(time=time).first()
+        existing_entry = TeamA.objects.filter(time=time).first()
 
         
         if existing_entry:
             existing_entry.delete()
 
-        serializer = TeamA_Q1Serializer(data=request.data)
+        serializer = TeamASerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-class TeamA_Q1FetchView(APIView):
+class TeamAFetchView(APIView):
     def get(self, request, format=None):
-        queryset = TeamA_Q1.objects.all()  
-        serializer = TeamA_Q1Serializer(queryset, many=True)
+        # Filter queryset to exclude objects where certain fields are null
+        queryset = TeamA.objects.exclude(
+            made__isnull=True,
+            made_SJN__isnull=True,
+            # Add more fields as needed
+        )
+        
+        serializer = TeamASerializer(queryset, many=True)
         return Response(serializer.data)
 
-
-class TeamA_Q1DeleteView(APIView):
+class TeamADeleteView(APIView):
     def delete(self, request, format=None):
         try:
             time = request.data.get('time')
             if time is not None:
-                queryset = TeamA_Q1.objects.filter(time=time)
+                queryset = TeamA.objects.filter(time=time)
                 if queryset.exists():
                     queryset.delete()
                     return Response(status=status.HTTP_204_NO_CONTENT)
@@ -47,7 +52,7 @@ class TeamA_Q1DeleteView(APIView):
         
 
 
-class TeamA_Q1TimeListView(APIView):
+class TeamATimeListView(APIView):
     def get(self, request, format=None):
-        times = TeamA_Q1.objects.values_list('time', flat=True)  
+        times = TeamA.objects.values_list('time', flat=True)  
         return Response(times)
