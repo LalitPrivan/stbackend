@@ -44,3 +44,10 @@ class TeamA_Q1DeleteView(APIView):
                 return Response({"message": "Time parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+
+
+class TeamA_Q1TimeListView(APIView):
+    def get(self, request, format=None):
+        times = TeamA_Q1.objects.values_list('time', flat=True)  
+        return Response(times)
