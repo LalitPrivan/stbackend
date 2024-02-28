@@ -99,7 +99,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"time\": 111,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"2p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": 12.12,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": \"Some miss type\",\r\n  \"miss_outb\": \"ff\",\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \r\n  \"mwf_Dlocy\": null\r\n}\r\n",
+					"raw": "{\r\n  \"time\": 11231,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"3p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": 12.12,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": \"Some miss type\",\r\n  \"miss_outb\": \"ff\",\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \r\n  \"mwf_Dlocy\": null\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -138,7 +138,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/",
+					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/?shot_type=",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -153,6 +153,12 @@
 						"TeamA",
 						"fetch",
 						""
+					],
+					"query": [
+						{
+							"key": "shot_type",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -205,7 +211,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/times",
+					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/times?shot_type=2p",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -220,6 +226,12 @@
 						"TeamA",
 						"fetch",
 						"times"
+					],
+					"query": [
+						{
+							"key": "shot_type",
+							"value": "2p"
+						}
 					]
 				}
 			},
@@ -238,7 +250,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"time\": 111,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"2p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": 12.12,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": \"Some miss type\",\r\n  \"miss_outb\": \"ff\",\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \r\n  \"mwf_Dlocy\": null\r\n}\r\n",
+					"raw": "{\r\n  \"time\": 11333424242251,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"2p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": 12.12,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": \"Some miss type\",\r\n  \"miss_outb\": \"ff\",\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \r\n  \"mwf_Dlocy\": null\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -318,7 +330,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/",
+					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/?shot_type=",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -333,6 +345,12 @@
 						"TeamB",
 						"fetch",
 						""
+					],
+					"query": [
+						{
+							"key": "shot_type",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -344,7 +362,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/times",
+					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/times?shot_type=2p",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -359,6 +377,12 @@
 						"TeamB",
 						"fetch",
 						"times"
+					],
+					"query": [
+						{
+							"key": "shot_type",
+							"value": "2p"
+						}
 					]
 				}
 			},
