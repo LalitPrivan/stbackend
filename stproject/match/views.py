@@ -32,7 +32,7 @@ class TeamAFetchView(APIView):
             queryset = TeamA.objects.all()  # Fetch all objects
         else:
             # Validate the shot type
-            if shot_type not in ['2p', '3p']:
+            if shot_type not in ['2P', '3P','FREE THROW','FOUL','TEAM REBOUND' , 'INBOUND','TURNOVER', 'SUBSTITUTION']:
                 return Response({'message': 'Invalid shot type'}, status=status.HTTP_400_BAD_REQUEST)
             
             queryset = TeamA.objects.filter(shot=shot_type)
@@ -50,7 +50,7 @@ class TeamATimeListView(APIView):
             queryset = TeamA.objects.all()  # Fetch all objects
         else:
             # Validate the shot type
-            if shot_type not in ['2p', '3p']:
+            if shot_type not in ['2P', '3P','FREE THROW','FOUL','TEAM REBOUND' , 'INBOUND','TURNOVER', 'SUBSTITUTION']:
                 return Response({'message': 'Invalid shot type'}, status=status.HTTP_400_BAD_REQUEST)
             
             queryset = TeamA.objects.filter(shot=shot_type)
@@ -109,7 +109,7 @@ class TeamBFetchView(APIView):
             queryset = TeamB.objects.all()  # Fetch all objects
         else:
             # Validate the shot type
-            if shot_type not in ['2p', '3p']:
+            if shot_type not in ['2P', '3P','FREE THROW','FOUL','TEAM REBOUND' , 'INBOUND','TURNOVER', 'SUBSTITUTION']:
                 return Response({'message': 'Invalid shot type'}, status=status.HTTP_400_BAD_REQUEST)
             
             queryset = TeamB.objects.filter(shot=shot_type)
@@ -144,7 +144,7 @@ class TeamBTimeListView(APIView):
             queryset = TeamB.objects.all()  # Fetch all objects
         else:
             # Validate the shot type
-            if shot_type not in ['2p', '3p']:
+            if shot_type not in ['2P', '3P','FREE THROW','FOUL','TEAM REBOUND' , 'INBOUND','TURNOVER', 'SUBSTITUTION']:
                 return Response({'message': 'Invalid shot type'}, status=status.HTTP_400_BAD_REQUEST)
             
             queryset = TeamB.objects.filter(shot=shot_type)
