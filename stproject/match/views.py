@@ -25,10 +25,7 @@ class TeamACreateUpadateView(APIView):
 # TeamA fetch
 class TeamAFetchView(APIView):
     def get(self, request, format=None):
-        queryset = TeamA.objects.exclude(
-            made__isnull=True,
-            made_SJN__isnull=True,
-        )
+        queryset = TeamA.objects.all()  # Fetch all objects
         
         serializer = TeamASerializer(queryset, many=True)
         return Response(serializer.data)
@@ -50,10 +47,23 @@ class TeamADeleteView(APIView):
         except Exception as e:
             return Response({"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-# TeamA fetch time
+# TeamA fetch time on basis of shot 
 class TeamATimeListView(APIView):
     def get(self, request, format=None):
-        times = TeamA.objects.values_list('time', flat=True)  
+        shot_type = request.query_params.get('shot_type')
+        
+        # Check if shot_type is None or empty string
+        if shot_type is None or shot_type.strip() == '':
+            queryset = TeamA.objects.all()  # Fetch all objects
+        else:
+            # Validate the shot type
+            if shot_type not in ['2p', '3p']:
+                return Response({'message': 'Invalid shot type'}, status=status.HTTP_400_BAD_REQUEST)
+            
+            queryset = TeamA.objects.filter(shot=shot_type)
+        
+        times = queryset.exclude(time__isnull=True).values_list('time', flat=True)
+        
         return Response(times)
     
 # TeamB Insert and update 
@@ -76,14 +86,11 @@ class TeamBCreateUpadateView(APIView):
 # TeamB fetch
 class TeamBFetchView(APIView):
     def get(self, request, format=None):
-        queryset = TeamB.objects.exclude(
-            made__isnull=True,
-            made_SJN__isnull=True,
-        )
+        queryset = TeamB.objects.all()  # Fetch all objects
         
         serializer = TeamBSerializer(queryset, many=True)
         return Response(serializer.data)
-
+    
 # TeamB delete
 class TeamBDeleteView(APIView):
     def delete(self, request, format=None):
@@ -101,8 +108,21 @@ class TeamBDeleteView(APIView):
         except Exception as e:
             return Response({"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-# TeamB fetch time
+# TeamB fetch time fetch time on basis of shot 
 class TeamBTimeListView(APIView):
     def get(self, request, format=None):
-        times = TeamB.objects.values_list('time', flat=True)  
+        shot_type = request.query_params.get('shot_type')
+        
+        # Check if shot_type is None or empty string
+        if shot_type is None or shot_type.strip() == '':
+            queryset = TeamB.objects.all()  # Fetch all objects
+        else:
+            # Validate the shot type
+            if shot_type not in ['2p', '3p']:
+                return Response({'message': 'Invalid shot type'}, status=status.HTTP_400_BAD_REQUEST)
+            
+            queryset = TeamB.objects.filter(shot=shot_type)
+        
+        times = queryset.exclude(time__isnull=True).values_list('time', flat=True)
+        
         return Response(times)

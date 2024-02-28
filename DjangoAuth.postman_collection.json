@@ -87,7 +87,7 @@
 			"response": []
 		},
 		{
-			"name": "TeamA_Q1",
+			"name": "TeamA_insert",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -99,7 +99,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"time\": 115156,\r\n  \"shot\": \"2p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": null,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": \"Some miss type\",\r\n  \"miss_outb\": null,\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"quater\": null\r\n}\r\n",
+					"raw": "{\r\n  \"time\": 111,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"2p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": 12.12,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": \"Some miss type\",\r\n  \"miss_outb\": \"ff\",\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \r\n  \"mwf_Dlocy\": null\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -133,7 +133,7 @@
 			"response": []
 		},
 		{
-			"name": "fetch",
+			"name": "TeamA_fetch",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -159,7 +159,7 @@
 			"response": []
 		},
 		{
-			"name": "delete",
+			"name": "TeamA_delete",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -200,7 +200,7 @@
 			"response": []
 		},
 		{
-			"name": "fetchtime",
+			"name": "TeamA_fetchtime",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -218,6 +218,145 @@
 						"api",
 						"match",
 						"TeamA",
+						"fetch",
+						"times"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TeamB_insert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"time\": 111,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"2p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": 12.12,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": \"Some miss type\",\r\n  \"miss_outb\": \"ff\",\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \r\n  \"mwf_Dlocy\": null\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/match/TeamB/?",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"match",
+						"TeamB",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TeamB_delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"time\": 111\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/match/TeamB/delete/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"match",
+						"TeamB",
+						"delete",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TeamB_fetch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"match",
+						"TeamB",
+						"fetch",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TeamB_fetchtime",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/times",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"match",
+						"TeamB",
 						"fetch",
 						"times"
 					]
