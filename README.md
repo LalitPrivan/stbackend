@@ -8,5 +8,4 @@ after activate virtual env  'cd stproject'
 
 'pip install -r requirements.txt' this is for install necessary packages in your env 
 
-
 run
