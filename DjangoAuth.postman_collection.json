@@ -99,7 +99,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"time\": 11231,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"3p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": 12.12,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": \"Some miss type\",\r\n  \"miss_outb\": \"ff\",\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \r\n  \"mwf_Dlocy\": null\r\n}\r\n",
+					"raw": "{\r\n  \"match_time\": 1234567890,\r\n  \"game_time\": \"12:34:56\",\r\n  \"start_game\": \"Team A vs Team B\",\r\n  \"end_game\": \"End of regulation\",\r\n  \"quarter\": \"Q3\",\r\n  \"tag\": \"Three-pointer\",\r\n  \"shot_type\": \"Jump shot\",\r\n  \"made_sjn\": \"23\",\r\n  \"made_sloc\": {\"x\": 10, \"y\": 15},\r\n  \"made_ajn\": \"11\",\r\n  \"miss_type\": \"Layup\",\r\n  \"reb_type\": \"Offensive\",\r\n  \"miss_off_jn\": \"32\",\r\n  \"miss_off_loc\": {\"x\": 20, \"y\": 25},\r\n  \"miss_def_jn\": \"5\",\r\n  \"miss_def_loc\": {\"x\": 30, \"y\": 35},\r\n  \"foul_type\": \"Personal\",\r\n  \"shot_foul\": \"Shooting foul\",\r\n  \"made_wf_sjn\": \"23\",\r\n  \"made_wf_sloc\": {\"x\": 40, \"y\": 45},\r\n  \"made_wf_ajn\": \"10\",\r\n  \"miss_wf_sjn\": \"23\",\r\n  \"miss_wf_sloc\": {\"x\": 50, \"y\": 55},\r\n  \"miss_wf_djn\": \"7\",\r\n  \"miss_wf_dloc\": {\"x\": 60, \"y\": 65},\r\n  \"player_in_jn\": \"14\",\r\n  \"player_out_jn\": \"32\",\r\n  \"turnover_type\": \"Traveling\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -134,11 +134,23 @@
 		},
 		{
 			"name": "TeamA_fetch",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/?shot_type=",
+					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -156,8 +168,24 @@
 					],
 					"query": [
 						{
+							"key": "quarter",
+							"value": "Q3",
+							"disabled": true
+						},
+						{
+							"key": "tag",
+							"value": "Three-pointer",
+							"disabled": true
+						},
+						{
 							"key": "shot_type",
-							"value": ""
+							"value": "Jump",
+							"disabled": true
+						},
+						{
+							"key": "made_sjn",
+							"value": "23",
+							"disabled": true
 						}
 					]
 				}
@@ -177,7 +205,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"time\": 115156156\r\n}",
+					"raw": "{\r\n    \"match_time\": 1234567890\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -206,38 +234,6 @@
 			"response": []
 		},
 		{
-			"name": "TeamA_fetchtime",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/times?shot_type=2p",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"match",
-						"TeamA",
-						"fetch",
-						"times"
-					],
-					"query": [
-						{
-							"key": "shot_type",
-							"value": "2p"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "TeamB_insert",
 			"request": {
 				"method": "POST",
@@ -250,7 +246,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"time\": 11333424242251,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"2p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": 12.12,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": \"Some miss type\",\r\n  \"miss_outb\": \"ff\",\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \r\n  \"mwf_Dlocy\": null\r\n}\r\n",
+					"raw": "{\r\n  \"time\": 1,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"2p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": null,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": null,\r\n  \"miss_outb\": null,\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \"mwf_Dlocy\": null\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -350,38 +346,6 @@
 						{
 							"key": "shot_type",
 							"value": ""
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "TeamB_fetchtime",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/times?shot_type=2p",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "8000",
-					"path": [
-						"api",
-						"match",
-						"TeamB",
-						"fetch",
-						"times"
-					],
-					"query": [
-						{
-							"key": "shot_type",
-							"value": "2p"
 						}
 					]
 				}
