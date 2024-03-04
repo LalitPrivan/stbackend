@@ -4,4 +4,4 @@ from match.models import TeamA,TeamB
 
 
 admin.site.register(TeamA),
-admin.site.register(TeamB)
+admin.site.register(TeamB),

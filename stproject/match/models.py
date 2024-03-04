@@ -1,72 +1,142 @@
 from django.db import models
 
-
 class TeamA(models.Model):
-    time = models.BigIntegerField(primary_key=True)
-    quater = models.CharField(max_length=50)
-    shot = models.CharField(max_length=50)
-    made = models.CharField(max_length=50, null=True, blank=True)
-    made_SJN = models.CharField(max_length=50, null=True, blank=True)
-    made_locx = models.FloatField(null=True, blank=True)
-    made_locy = models.FloatField(null=True, blank=True)
-    made_assist = models.CharField(max_length=50, null=True, blank=True)
-    made_shottype = models.CharField(max_length=50, null=True, blank=True)
-    miss = models.CharField(max_length=50, null=True, blank=True)
-    miss_outb = models.CharField(max_length=50, null=True, blank=True)
-    miss_reb = models.CharField(max_length=50, null=True, blank=True)
-    o_reb_SJN = models.CharField(max_length=50, null=True, blank=True)
-    d_reb_DJN = models.CharField(max_length=50, null=True, blank=True)
+    match_time = models.BigIntegerField(primary_key = True)
+    game_time = models.TimeField(unique=True)
+    start_game = models.CharField(max_length=50, null=True, blank=True)
+    end_game = models.CharField(max_length=50, null=True, blank=True)
+    quarter = models.CharField(max_length=50, null=True, blank=True)
+    tag = models.CharField(max_length=50, null=True, blank=True)
+    shot = models.CharField(max_length=50, null=True, blank=True)
+    shot_type = models.CharField(max_length=50, null=True, blank=True)
+    made_sjn = models.CharField(max_length=50, null=True, blank=True)
+    made_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    made_ajn = models.CharField(max_length=50, null=True, blank=True)
+    miss_type = models.CharField(max_length=50, null=True, blank=True)
+    reb_type = models.CharField(max_length=50, null=True, blank=True)
+    miss_off_jn = models.CharField(max_length=50, null=True, blank=True)
+    miss_off_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    miss_def_jn = models.CharField(max_length=50, null=True, blank=True)
+    miss_def_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates    
+    foul_type = models.CharField(max_length=50, null=True, blank=True)
     shot_foul = models.CharField(max_length=50, null=True, blank=True)
-    shot_foul_SJN = models.CharField(max_length=50, null=True, blank=True)
-    shot_foul_Slocx = models.FloatField(null=True, blank=True)
-    shot_foul_Slocy = models.FloatField(null=True, blank=True)
-    shot_foul_DJN = models.CharField(max_length=50, null=True, blank=True)
-    shot_foul_Dlocx = models.FloatField(null=True, blank=True)
-    shot_foul_Dlocy = models.FloatField(null=True, blank=True)
-    mwf = models.CharField(max_length=50, null=True, blank=True)
-    mwf_SJN = models.CharField(max_length=50, null=True, blank=True)
-    mwf_Slocx = models.FloatField(null=True, blank=True)
-    mwf_Slocy = models.FloatField(null=True, blank=True)
-    mwf_assist = models.CharField(max_length=50, null=True, blank=True)
-    mwf_shottype = models.CharField(max_length=50, null=True, blank=True)
-    mwf_DJN = models.CharField(max_length=50, null=True, blank=True)
-    mwf_Dlocx = models.FloatField(null=True, blank=True)
-    mwf_Dlocy = models.FloatField(null=True, blank=True)
+    made_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
+    made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
+    made_wf_ajn = models.CharField(max_length=50, null=True, blank=True)
+    miss_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
+    miss_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
+    miss_wf_djn = models.CharField(max_length=50, null=True, blank=True)
+    miss_wf_dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
+    player_in_jn = models.CharField(max_length=50, null=True, blank=True)
+    player_out_jn = models.CharField(max_length=50, null=True, blank=True)
+    turnover_type = models.CharField(max_length=50, null=True, blank=True)
+
 
     def _str_(self):
-        return self.time
+        return self.match_time
     
 class TeamB(models.Model):
-    time = models.BigIntegerField(primary_key=True)
-    quater = models.CharField(max_length=50)
-    shot = models.CharField(max_length=50)
-    made = models.CharField(max_length=50, null=True, blank=True)
-    made_SJN = models.CharField(max_length=50, null=True, blank=True)
-    made_locx = models.FloatField(null=True, blank=True)
-    made_locy = models.FloatField(null=True, blank=True)
-    made_assist = models.CharField(max_length=50, null=True, blank=True)
-    made_shottype = models.CharField(max_length=50, null=True, blank=True)
-    miss = models.CharField(max_length=50, null=True, blank=True)
-    miss_outb = models.CharField(max_length=50, null=True, blank=True)
-    miss_reb = models.CharField(max_length=50, null=True, blank=True)
-    o_reb_SJN = models.CharField(max_length=50, null=True, blank=True)
-    d_reb_DJN = models.CharField(max_length=50, null=True, blank=True)
+    match_time = models.BigIntegerField(primary_key = True)
+    game_time = models.TimeField(unique=True)
+    start_game = models.CharField(max_length=50, null=True, blank=True)
+    end_game = models.CharField(max_length=50, null=True, blank=True)
+    quater = models.CharField(max_length=50, null=True, blank=True)
+    tag = models.CharField(max_length=50, null=True, blank=True)
+    shot = models.CharField(max_length=50, null=True, blank=True)
+    shot_type = models.CharField(max_length=50, null=True, blank=True)
+    made_sjn = models.CharField(max_length=50, null=True, blank=True)
+    made_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    made_ajn = models.CharField(max_length=50, null=True, blank=True)
+    miss_type = models.CharField(max_length=50, null=True, blank=True)
+    reb_type = models.CharField(max_length=50, null=True, blank=True)
+    miss_off_jn = models.CharField(max_length=50, null=True, blank=True)
+    miss_off_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    miss_def_jn = models.CharField(max_length=50, null=True, blank=True)
+    miss_def_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates    
+    foul_type = models.CharField(max_length=50, null=True, blank=True)
     shot_foul = models.CharField(max_length=50, null=True, blank=True)
-    shot_foul_SJN = models.CharField(max_length=50, null=True, blank=True)
-    shot_foul_Slocx = models.FloatField(null=True, blank=True)
-    shot_foul_Slocy = models.FloatField(null=True, blank=True)
-    shot_foul_DJN = models.CharField(max_length=50, null=True, blank=True)
-    shot_foul_Dlocx = models.FloatField(null=True, blank=True)
-    shot_foul_Dlocy = models.FloatField(null=True, blank=True)
-    mwf = models.CharField(max_length=50, null=True, blank=True)
-    mwf_SJN = models.CharField(max_length=50, null=True, blank=True)
-    mwf_Slocx = models.FloatField(null=True, blank=True)
-    mwf_Slocy = models.FloatField(null=True, blank=True)
-    mwf_assist = models.CharField(max_length=50, null=True, blank=True)
-    mwf_shottype = models.CharField(max_length=50, null=True, blank=True)
-    mwf_DJN = models.CharField(max_length=50, null=True, blank=True)
-    mwf_Dlocx = models.FloatField(null=True, blank=True)
-    mwf_Dlocy = models.FloatField(null=True, blank=True)
+    made_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
+    made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
+    made_wf_ajn = models.CharField(max_length=50, null=True, blank=True)
+    miss_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
+    miss_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
+    miss_wf_djn = models.CharField(max_length=50, null=True, blank=True)
+    miss_wf_dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
+    player_in_jn = models.CharField(max_length=50, null=True, blank=True)
+    player_out_jn = models.CharField(max_length=50, null=True, blank=True)
+    turnover_type = models.CharField(max_length=50, null=True, blank=True)
+
 
     def _str_(self):
-        return self.time
+        return self.match_time
+    
+
+# class TeamA(models.Model):
+#     time = models.BigIntegerField(primary_key=True)
+#     quater = models.CharField(max_length=50)
+#     shot = models.CharField(max_length=50)
+#     made = models.CharField(max_length=50, null=True, blank=True)
+#     made_SJN = models.CharField(max_length=50, null=True, blank=True)
+#     made_locx = models.FloatField(null=True, blank=True)
+#     made_locy = models.FloatField(null=True, blank=True)
+#     made_assist = models.CharField(max_length=50, null=True, blank=True)
+#     made_shottype = models.CharField(max_length=50, null=True, blank=True)
+#     miss = models.CharField(max_length=50, null=True, blank=True)
+#     miss_outb = models.CharField(max_length=50, null=True, blank=True)
+#     miss_reb = models.CharField(max_length=50, null=True, blank=True)
+#     o_reb_SJN = models.CharField(max_length=50, null=True, blank=True)
+#     d_reb_DJN = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul_SJN = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul_Slocx = models.FloatField(null=True, blank=True)
+#     shot_foul_Slocy = models.FloatField(null=True, blank=True)
+#     shot_foul_DJN = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul_Dlocx = models.FloatField(null=True, blank=True)
+#     shot_foul_Dlocy = models.FloatField(null=True, blank=True)
+#     mwf = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_SJN = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_Slocx = models.FloatField(null=True, blank=True)
+#     mwf_Slocy = models.FloatField(null=True, blank=True)
+#     mwf_assist = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_shottype = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_DJN = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_Dlocx = models.FloatField(null=True, blank=True)
+#     mwf_Dlocy = models.FloatField(null=True, blank=True)
+
+#     def _str_(self):
+#         return self.time
+    
+# class TeamB(models.Model):
+#     time = models.BigIntegerField(primary_key=True)
+#     quater = models.CharField(max_length=50)
+#     shot = models.CharField(max_length=50)
+#     made = models.CharField(max_length=50, null=True, blank=True)
+#     made_SJN = models.CharField(max_length=50, null=True, blank=True)
+#     made_locx = models.FloatField(null=True, blank=True)
+#     made_locy = models.FloatField(null=True, blank=True)
+#     made_assist = models.CharField(max_length=50, null=True, blank=True)
+#     made_shottype = models.CharField(max_length=50, null=True, blank=True)
+#     miss = models.CharField(max_length=50, null=True, blank=True)
+#     miss_outb = models.CharField(max_length=50, null=True, blank=True)
+#     miss_reb = models.CharField(max_length=50, null=True, blank=True)
+#     o_reb_SJN = models.CharField(max_length=50, null=True, blank=True)
+#     d_reb_DJN = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul_SJN = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul_Slocx = models.FloatField(null=True, blank=True)
+#     shot_foul_Slocy = models.FloatField(null=True, blank=True)
+#     shot_foul_DJN = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul_Dlocx = models.FloatField(null=True, blank=True)
+#     shot_foul_Dlocy = models.FloatField(null=True, blank=True)
+#     mwf = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_SJN = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_Slocx = models.FloatField(null=True, blank=True)
+#     mwf_Slocy = models.FloatField(null=True, blank=True)
+#     mwf_assist = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_shottype = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_DJN = models.CharField(max_length=50, null=True, blank=True)
+#     mwf_Dlocx = models.FloatField(null=True, blank=True)
+#     mwf_Dlocy = models.FloatField(null=True, blank=True)
+
+#     def _str_(self):
+#         return self.time
