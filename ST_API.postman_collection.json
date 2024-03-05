@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "cfad30ca-c3a5-425c-9a8f-10d3b3ad2da6",
-		"name": "DjangoAuth",
+		"name": "ST_API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "33078084"
 	},
@@ -99,7 +99,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"match_time\": 1234567890,\r\n  \"game_time\": \"12:34:56\",\r\n  \"start_game\": \"Team A vs Team B\",\r\n  \"end_game\": \"End of regulation\",\r\n  \"quarter\": \"Q3\",\r\n  \"tag\": \"Three-pointer\",\r\n  \"shot_type\": \"Jump shot\",\r\n  \"made_sjn\": \"23\",\r\n  \"made_sloc\": {\"x\": 10, \"y\": 15},\r\n  \"made_ajn\": \"11\",\r\n  \"miss_type\": \"Layup\",\r\n  \"reb_type\": \"Offensive\",\r\n  \"miss_off_jn\": \"32\",\r\n  \"miss_off_loc\": {\"x\": 20, \"y\": 25},\r\n  \"miss_def_jn\": \"5\",\r\n  \"miss_def_loc\": {\"x\": 30, \"y\": 35},\r\n  \"foul_type\": \"Personal\",\r\n  \"shot_foul\": \"Shooting foul\",\r\n  \"made_wf_sjn\": \"23\",\r\n  \"made_wf_sloc\": {\"x\": 40, \"y\": 45},\r\n  \"made_wf_ajn\": \"10\",\r\n  \"miss_wf_sjn\": \"23\",\r\n  \"miss_wf_sloc\": {\"x\": 50, \"y\": 55},\r\n  \"miss_wf_djn\": \"7\",\r\n  \"miss_wf_dloc\": {\"x\": 60, \"y\": 65},\r\n  \"player_in_jn\": \"14\",\r\n  \"player_out_jn\": \"32\",\r\n  \"turnover_type\": \"Traveling\"\r\n}",
+					"raw": "{\r\n  \"match_time\": 1243446,\r\n  \"game_time\": \"13:44:05\",\r\n  \"start_game\": \"start\",\r\n  \"end_game\": \"End\",\r\n  \"quarter\": \"OT\",\r\n  \"tag\": \"3p\",\r\n  \"shot\":\"made\",\r\n  \"shot_type\": \"Jumper\",\r\n  \"made_sjn\": \"22\",\r\n  \"made_sloc\": {\"x\": 10, \"y\": 15},\r\n  \"made_ajn\": \"11\",\r\n  \"miss_type\": \"rebound\",\r\n  \"reb_type\": \"Offensive\",\r\n  \"miss_off_jn\": \"32\",\r\n  \"miss_off_loc\": {\"x\": 20, \"y\": 25},\r\n  \"miss_def_jn\": \"5\",\r\n  \"miss_def_loc\": {\"x\": 30, \"y\": 35},\r\n  \"foul_type\": \"Personal\",\r\n  \"shot_foul\": \"Shooting foul\",\r\n  \"made_wf_sjn\": \"23\",\r\n  \"made_wf_sloc\": {\"x\": 40, \"y\": 45},\r\n  \"made_wf_ajn\": \"10\",\r\n  \"miss_wf_sjn\": \"23\",\r\n  \"miss_wf_sloc\": {\"x\": 50, \"y\": 55},\r\n  \"miss_wf_djn\": \"7\",\r\n  \"miss_wf_dloc\": {\"x\": 60, \"y\": 65},\r\n  \"player_in_jn\": \"14\",\r\n  \"player_out_jn\": \"32\",\r\n  \"turnover_type\": \"Traveling\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -150,7 +150,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/",
+					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/?tag=Three-pointer&shot_type=Jump&made_sjn=23&quarter=Q4&quarter=Q3",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -168,24 +168,24 @@
 					],
 					"query": [
 						{
-							"key": "quarter",
-							"value": "Q3",
-							"disabled": true
-						},
-						{
 							"key": "tag",
-							"value": "Three-pointer",
-							"disabled": true
+							"value": "Three-pointer"
 						},
 						{
 							"key": "shot_type",
-							"value": "Jump",
-							"disabled": true
+							"value": "Jump"
 						},
 						{
 							"key": "made_sjn",
-							"value": "23",
-							"disabled": true
+							"value": "23"
+						},
+						{
+							"key": "quarter",
+							"value": "Q4"
+						},
+						{
+							"key": "quarter",
+							"value": "Q3"
 						}
 					]
 				}
@@ -246,7 +246,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"time\": 1,\r\n  \"quater\": \"1\",\r\n  \"shot\": \"2p\",\r\n  \"made\": \"yes\",\r\n  \"made_SJN\": null,\r\n  \"made_locx\": null,\r\n  \"made_locy\": null,\r\n  \"made_assist\": null,\r\n  \"made_shottype\": null,\r\n  \"miss\": null,\r\n  \"miss_outb\": null,\r\n  \"miss_reb\": null,\r\n  \"o_reb_SJN\": null,\r\n  \"d_reb_DJN\": null,\r\n  \"shot_foul\": null,\r\n  \"shot_foul_SJN\": null,\r\n  \"shot_foul_Slocx\": null,\r\n  \"shot_foul_Slocy\": null,\r\n  \"shot_foul_DJN\": null,\r\n  \"shot_foul_Dlocx\": null,\r\n  \"shot_foul_Dlocy\": null,\r\n  \"mwf\": null,\r\n  \"mwf_SJN\": null,\r\n  \"mwf_Dlocy\": null\r\n}\r\n",
+					"raw": "{\r\n  \"match_time\": 123456780,\r\n  \"game_time\": \"12:34:56\",\r\n  \"start_game\": \"Team A vs Team B\",\r\n  \"end_game\": \"End of regulation\",\r\n  \"quarter\": \"Q3\",\r\n  \"tag\": \"Three-pointer\",\r\n  \"shot_type\": \"Jump shot\",\r\n  \"made_sjn\": \"23\",\r\n  \"made_sloc\": {\"x\": 10, \"y\": 15},\r\n  \"made_ajn\": \"11\",\r\n  \"miss_type\": \"Layup\",\r\n  \"reb_type\": \"Offensive\",\r\n  \"miss_off_jn\": \"32\",\r\n  \"miss_off_loc\": {\"x\": 20, \"y\": 25},\r\n  \"miss_def_jn\": \"5\",\r\n  \"miss_def_loc\": {\"x\": 30, \"y\": 35},\r\n  \"foul_type\": \"Personal\",\r\n  \"shot_foul\": \"Shooting foul\",\r\n  \"made_wf_sjn\": \"23\",\r\n  \"made_wf_sloc\": {\"x\": 40, \"y\": 45},\r\n  \"made_wf_ajn\": \"10\",\r\n  \"miss_wf_sjn\": \"23\",\r\n  \"miss_wf_sloc\": {\"x\": 50, \"y\": 55},\r\n  \"miss_wf_djn\": \"7\",\r\n  \"miss_wf_dloc\": {\"x\": 60, \"y\": 65},\r\n  \"player_in_jn\": \"14\",\r\n  \"player_out_jn\": \"32\",\r\n  \"turnover_type\": \"Traveling\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -292,7 +292,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"time\": 111\r\n}",
+					"raw": "{\r\n    \"match_time\": 1234567890\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -326,7 +326,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/?shot_type=",
+					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -344,11 +344,40 @@
 					],
 					"query": [
 						{
+							"key": "tag",
+							"value": "Three-pointer",
+							"disabled": true
+						},
+						{
 							"key": "shot_type",
-							"value": ""
+							"value": "Jump",
+							"disabled": true
+						},
+						{
+							"key": "made_sjn",
+							"value": "23",
+							"disabled": true
+						},
+						{
+							"key": "quarter",
+							"value": "Q4",
+							"disabled": true
+						},
+						{
+							"key": "quarter",
+							"value": "Q3",
+							"disabled": true
 						}
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}

@@ -25,34 +25,30 @@ class TeamACreateUpadateView(APIView):
 # TeamA fetch data with filter
 class TeamAFetchView(APIView):
     def get(self, request, format=None):
-        # Get query parameters
-        quarter = request.query_params.get('quarter')
-        tag = request.query_params.get('tag')
-        shot_type = request.query_params.get('shot_type')
-        made_sjn = request.query_params.get('made_sjn')
-        shot = request.query_params.get('shot')
-        
-        # Initialize the queryset
+    # Get query parameters
+        filter_params = [
+        'quarter', 'tag', 'shot', 'shot_type', 'made_sjn', 'miss_type', 'made_assist', 
+        'made_ajn', 'reb_type', 'miss_off_jn', 'miss_def_jn', 'foul_type', 'shot_foul', 
+        'made_wf_sjn', 'made_wf_assist', 'made_wf_ajn', 'miss_wf_sjn', 'miss_wf_djn', 
+        'player_in_jn', 'player_out_jn', 'turnover_type'
+    ]
+
+    # Initialize the queryset
         queryset = TeamA.objects.all()
-        
-        # Apply filters based on query parameters
-        if quarter:
-            queryset = queryset.filter(quarter=quarter)
-        if tag:
-            queryset = queryset.filter(tag=tag)
-        if shot_type:
-            queryset = queryset.filter(shot_type=shot_type)
-        if made_sjn:
-            queryset = queryset.filter(made_sjn=made_sjn)
-        if shot:
-            queryset = queryset.filter(shot=shot)
-        
+
+    # Apply filters based on query parameters
+        for param in filter_params:
+            param_values = request.query_params.getlist(param)
+            if param_values:
+                filter_args = {f"{param}__in": param_values}
+                queryset = queryset.filter(**filter_args)
+    
         # Order queryset by match_time
         queryset = queryset.order_by('match_time')
-        
+    
         # Serialize the filtered and ordered queryset
         serializer = TeamASerializer(queryset, many=True)
-        
+    
         return Response(serializer.data)
     
 # TeamA delete
@@ -73,6 +69,8 @@ class TeamADeleteView(APIView):
             return Response({"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+
+# TeamB Insert and update 
 class TeamBCreateUpadateView(APIView):
     def post(self, request, format=None):
         match_time = request.data.get('match_time')
@@ -89,22 +87,38 @@ class TeamBCreateUpadateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
+# ***********************************************************************************************************
+
+
 # TeamB fetch data with filter
 class TeamBFetchView(APIView):
     def get(self, request, format=None):
-        shot_type = request.query_params.get('shot_type')
-        
-        # Check if shot_type is None or empty string
-        if shot_type is None or shot_type.strip() == '':
-            queryset = TeamB.objects.all().order_by('match_time')  # Fetch all objects ordered by time
-        else:
-            # Validate the shot type
-            if shot_type not in ['2P', '3P','FREE THROW','FOUL','TEAM REBOUND' , 'INBOUND','TURNOVER', 'SUBSTITUTION']:
-                return Response({'message': 'Invalid shot type'}, status=status.HTTP_400_BAD_REQUEST)
-            
-            queryset = TeamB.objects.filter(shot=shot_type).order_by('match_time')
-        
+    # Get query parameters
+        filter_params = [
+        'quarter', 'tag', 'shot', 'shot_type', 'made_sjn', 'miss_type', 'made_assist', 
+        'made_ajn', 'reb_type', 'miss_off_jn', 'miss_def_jn', 'foul_type', 'shot_foul', 
+        'made_wf_sjn', 'made_wf_assist', 'made_wf_ajn', 'miss_wf_sjn', 'miss_wf_djn', 
+        'player_in_jn', 'player_out_jn', 'turnover_type'
+    ]
+
+    # Initialize the queryset
+        queryset = TeamB.objects.all()
+
+    # Apply filters based on query parameters
+        for param in filter_params:
+            param_values = request.query_params.getlist(param)
+            if param_values:
+                filter_args = {f"{param}__in": param_values}
+                queryset = queryset.filter(**filter_args)
+    
+        # Order queryset by match_time
+        queryset = queryset.order_by('match_time')
+    
+        # Serialize the filtered and ordered queryset
         serializer = TeamBSerializer(queryset, many=True)
+    
         return Response(serializer.data)
     
 # TeamB delete
@@ -123,6 +137,9 @@ class TeamBDeleteView(APIView):
                 return Response({"message": "Time parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+# ***********************************************************************************************************
+
 
 
 # # TeamA Insert and update 
@@ -274,3 +291,85 @@ class TeamBDeleteView(APIView):
 #                 return Response({"message": "Time parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
 #         except Exception as e:
             # return Response({"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+
+
+# class TeamAFetchView(APIView):
+#     def get(self, request, format=None):
+#         # Get query parameters
+#         quarters = request.query_params.getlist('quarter')
+#         tags = request.query_params.getlist('tag')
+#         shots = request.query_params.getlist('shot')
+#         shot_types = request.query_params.getlist('shot_type')
+#         made_sjns = request.query_params.getlist('made_sjn')
+#         miss_types = request.query_params.getlist('miss_type')
+#         made_assists = request.query_params.getlist('made_assist')
+#         made_ajns = request.query_params.getlist('made_ajn')
+#         reb_types = request.query_params.getlist('reb_type')
+#         miss_off_jns = request.query_params.getlist('miss_off_jn')
+#         miss_def_jns = request.query_params.getlist('miss_def_jn')
+#         foul_types = request.query_params.getlist('foul_type')
+#         shot_fouls = request.query_params.getlist('shot_foul')
+#         made_wf_sjns = request.query_params.getlist('made_wf_sjn')
+#         made_wf_assists = request.query_params.getlist('made_wf_assist')
+#         made_wf_ajns = request.query_params.getlist('made_wf_ajn')
+#         miss_wf_sjns = request.query_params.getlist('miss_wf_sjn')
+#         miss_wf_djns = request.query_params.getlist('miss_wf_djn')
+#         player_in_jns = request.query_params.getlist('player_in_jn')
+#         player_out_jns = request.query_params.getlist('player_out_jn')
+#         turnover_types = request.query_params.getlist('turnover_type')
+        
+#         # Initialize the queryset
+#         queryset = TeamA.objects.all()
+        
+#         # Apply filters based on query parameters
+#         if quarters:
+#             queryset = queryset.filter(quarter__in=quarters)
+#         if tags:
+#             queryset = queryset.filter(tag__in=tags)
+#         if shot_types:
+#             queryset = queryset.filter(shot_type__in=shot_types)
+#         if made_sjns:
+#             queryset = queryset.filter(made_sjn__in=made_sjns)
+#         if shots:
+#             queryset = queryset.filter(shot__in=shots)
+#         if miss_types:
+#             queryset = queryset.filter(miss_type__in=miss_types)
+#         if made_assists:
+#             queryset = queryset.filter(made_assist__in=made_assists)
+#         if made_ajns:
+#             queryset = queryset.filter(made_ajn__in=made_ajns)
+#         if reb_types:
+#             queryset = queryset.filter(reb_type__in=reb_types)
+#         if miss_off_jns:
+#             queryset = queryset.filter(miss_off_jn__in=miss_off_jns)
+#         if miss_def_jns:
+#             queryset = queryset.filter(miss_def_jn__in=miss_def_jns)
+#         if foul_types:
+#             queryset = queryset.filter(foul_type__in=foul_types)
+#         if shot_fouls:
+#             queryset = queryset.filter(shot_foul__in=shot_fouls)
+#         if made_wf_sjns:
+#             queryset = queryset.filter(made_wf_sjn__in=made_wf_sjns)
+#         if made_wf_assists:
+#             queryset = queryset.filter(made_wf_assist__in=made_wf_assists)
+#         if made_wf_ajns:
+#             queryset = queryset.filter(made_wf_ajn__in=made_wf_ajns)
+#         if miss_wf_sjns:
+#             queryset = queryset.filter(miss_wf_sjn__in=miss_wf_sjns)
+#         if miss_wf_djns:
+#             queryset = queryset.filter(miss_wf_djn__in=miss_wf_djns)
+#         if player_in_jns:
+#             queryset = queryset.filter(player_in_jn__in=player_in_jns)
+#         if player_out_jns:
+#             queryset = queryset.filter(player_out_jn__in=player_out_jns)
+#         if turnover_types:
+#             queryset = queryset.filter(turnover_type__in=turnover_types)
+                
+#         # Order queryset by match_time
+#         queryset = queryset.order_by('match_time')
+        
+#         # Serialize the filtered and ordered queryset
+#         serializer = TeamASerializer(queryset, many=True)
+        
+#         return Response(serializer.data)

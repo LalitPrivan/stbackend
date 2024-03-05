@@ -2,7 +2,7 @@ from django.db import models
 
 class TeamA(models.Model):
     match_time = models.BigIntegerField(primary_key = True)
-    game_time = models.TimeField(unique=True)
+    game_time = models.TimeField(unique=False)
     start_game = models.CharField(max_length=50, null=True, blank=True)
     end_game = models.CharField(max_length=50, null=True, blank=True)
     quarter = models.CharField(max_length=50, null=True, blank=True)
@@ -11,6 +11,7 @@ class TeamA(models.Model):
     shot_type = models.CharField(max_length=50, null=True, blank=True)
     made_sjn = models.CharField(max_length=50, null=True, blank=True)
     made_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    made_assist = models.CharField(max_length=50, null=True, blank=True)
     made_ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
     reb_type = models.CharField(max_length=50, null=True, blank=True)
@@ -21,7 +22,8 @@ class TeamA(models.Model):
     foul_type = models.CharField(max_length=50, null=True, blank=True)
     shot_foul = models.CharField(max_length=50, null=True, blank=True)
     made_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
-    made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
+    made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    made_wf_assist = models.CharField(max_length=50, null=True, blank=True)
     made_wf_ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
     miss_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
@@ -32,20 +34,21 @@ class TeamA(models.Model):
     turnover_type = models.CharField(max_length=50, null=True, blank=True)
 
 
-    def _str_(self):
-        return self.match_time
+    def __str__(self):
+        return str(self.match_time)
     
 class TeamB(models.Model):
     match_time = models.BigIntegerField(primary_key = True)
-    game_time = models.TimeField(unique=True)
+    game_time = models.TimeField(unique=False)
     start_game = models.CharField(max_length=50, null=True, blank=True)
     end_game = models.CharField(max_length=50, null=True, blank=True)
-    quater = models.CharField(max_length=50, null=True, blank=True)
+    quarter = models.CharField(max_length=50, null=True, blank=True)
     tag = models.CharField(max_length=50, null=True, blank=True)
     shot = models.CharField(max_length=50, null=True, blank=True)
     shot_type = models.CharField(max_length=50, null=True, blank=True)
     made_sjn = models.CharField(max_length=50, null=True, blank=True)
     made_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    made_assist = models.CharField(max_length=50, null=True, blank=True)
     made_ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
     reb_type = models.CharField(max_length=50, null=True, blank=True)
@@ -56,7 +59,8 @@ class TeamB(models.Model):
     foul_type = models.CharField(max_length=50, null=True, blank=True)
     shot_foul = models.CharField(max_length=50, null=True, blank=True)
     made_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
-    made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
+    made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    made_wf_assist = models.CharField(max_length=50, null=True, blank=True)
     made_wf_ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
     miss_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
@@ -67,8 +71,9 @@ class TeamB(models.Model):
     turnover_type = models.CharField(max_length=50, null=True, blank=True)
 
 
-    def _str_(self):
-        return self.match_time
+
+    def __str__(self):
+        return str(self.match_time)
     
 
 # class TeamA(models.Model):
