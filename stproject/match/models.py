@@ -8,9 +8,9 @@ class TeamA(models.Model):
     quarter = models.CharField(max_length=50, null=True, blank=True)
     tag = models.CharField(max_length=50, null=True, blank=True)
     shot = models.CharField(max_length=50, null=True, blank=True)
-    shot_type = models.CharField(max_length=50, null=True, blank=True)
-    made_sjn = models.CharField(max_length=50, null=True, blank=True)
-    made_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    shot_type = models.CharField(max_length=50, null=True, blank=True) 
+    sjn = models.CharField(max_length=50, null=True, blank=True) #for miss and made
+    sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     made_assist = models.CharField(max_length=50, null=True, blank=True)
     made_ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
@@ -46,8 +46,8 @@ class TeamB(models.Model):
     tag = models.CharField(max_length=50, null=True, blank=True)
     shot = models.CharField(max_length=50, null=True, blank=True)
     shot_type = models.CharField(max_length=50, null=True, blank=True)
-    made_sjn = models.CharField(max_length=50, null=True, blank=True)
-    made_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
+    sjn = models.CharField(max_length=50, null=True, blank=True) #for miss and made
+    sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) for miss and made
     made_assist = models.CharField(max_length=50, null=True, blank=True)
     made_ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
