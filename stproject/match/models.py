@@ -12,7 +12,7 @@ class TeamA(models.Model):
     sjn = models.CharField(max_length=50, null=True, blank=True) #for miss and made
     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     made_assist = models.CharField(max_length=50, null=True, blank=True)
-    made_ajn = models.CharField(max_length=50, null=True, blank=True)
+    ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
     reb_type = models.CharField(max_length=50, null=True, blank=True)
     miss_off_jn = models.CharField(max_length=50, null=True, blank=True)
@@ -24,7 +24,6 @@ class TeamA(models.Model):
     made_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
     made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
     made_wf_assist = models.CharField(max_length=50, null=True, blank=True)
-    made_wf_ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
     miss_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
     miss_wf_djn = models.CharField(max_length=50, null=True, blank=True)
@@ -45,11 +44,11 @@ class TeamB(models.Model):
     quarter = models.CharField(max_length=50, null=True, blank=True)
     tag = models.CharField(max_length=50, null=True, blank=True)
     shot = models.CharField(max_length=50, null=True, blank=True)
-    shot_type = models.CharField(max_length=50, null=True, blank=True)
+    shot_type = models.CharField(max_length=50, null=True, blank=True) 
     sjn = models.CharField(max_length=50, null=True, blank=True) #for miss and made
-    sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) for miss and made
+    sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     made_assist = models.CharField(max_length=50, null=True, blank=True)
-    made_ajn = models.CharField(max_length=50, null=True, blank=True)
+    ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
     reb_type = models.CharField(max_length=50, null=True, blank=True)
     miss_off_jn = models.CharField(max_length=50, null=True, blank=True)
@@ -61,7 +60,6 @@ class TeamB(models.Model):
     made_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
     made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
     made_wf_assist = models.CharField(max_length=50, null=True, blank=True)
-    made_wf_ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
     miss_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
     miss_wf_djn = models.CharField(max_length=50, null=True, blank=True)
