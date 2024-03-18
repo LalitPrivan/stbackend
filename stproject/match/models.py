@@ -9,25 +9,16 @@ class TeamA(models.Model):
     tag = models.CharField(max_length=50, null=True, blank=True)
     shot = models.CharField(max_length=50, null=True, blank=True)
     shot_type = models.CharField(max_length=50, null=True, blank=True) 
-    sjn = models.CharField(max_length=50, null=True, blank=True) #for miss and made
+    sjn = models.CharField(max_length=50, null=True, blank=True) 
     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    made_assist = models.CharField(max_length=50, null=True, blank=True)
+    djn = models.CharField(max_length=50, null=True, blank=True) 
+    dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    assist = models.CharField(max_length=50, null=True, blank=True)
     ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
     reb_type = models.CharField(max_length=50, null=True, blank=True)
-    miss_off_jn = models.CharField(max_length=50, null=True, blank=True)
-    miss_off_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
-    miss_def_jn = models.CharField(max_length=50, null=True, blank=True)
-    miss_def_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates    
     foul_type = models.CharField(max_length=50, null=True, blank=True)
     shot_foul = models.CharField(max_length=50, null=True, blank=True)
-    made_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
-    made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
-    made_wf_assist = models.CharField(max_length=50, null=True, blank=True)
-    miss_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
-    miss_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
-    miss_wf_djn = models.CharField(max_length=50, null=True, blank=True)
-    miss_wf_dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
     player_in_jn = models.CharField(max_length=50, null=True, blank=True)
     player_out_jn = models.CharField(max_length=50, null=True, blank=True)
     turnover_type = models.CharField(max_length=50, null=True, blank=True)
@@ -45,25 +36,16 @@ class TeamB(models.Model):
     tag = models.CharField(max_length=50, null=True, blank=True)
     shot = models.CharField(max_length=50, null=True, blank=True)
     shot_type = models.CharField(max_length=50, null=True, blank=True) 
-    sjn = models.CharField(max_length=50, null=True, blank=True) #for miss and made
+    sjn = models.CharField(max_length=50, null=True, blank=True) 
     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    made_assist = models.CharField(max_length=50, null=True, blank=True)
+    djn = models.CharField(max_length=50, null=True, blank=True) 
+    dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    assist = models.CharField(max_length=50, null=True, blank=True)
     ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
     reb_type = models.CharField(max_length=50, null=True, blank=True)
-    miss_off_jn = models.CharField(max_length=50, null=True, blank=True)
-    miss_off_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
-    miss_def_jn = models.CharField(max_length=50, null=True, blank=True)
-    miss_def_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates    
     foul_type = models.CharField(max_length=50, null=True, blank=True)
     shot_foul = models.CharField(max_length=50, null=True, blank=True)
-    made_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
-    made_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates
-    made_wf_assist = models.CharField(max_length=50, null=True, blank=True)
-    miss_wf_sjn = models.CharField(max_length=50, null=True, blank=True)
-    miss_wf_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
-    miss_wf_djn = models.CharField(max_length=50, null=True, blank=True)
-    miss_wf_dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates 
     player_in_jn = models.CharField(max_length=50, null=True, blank=True)
     player_out_jn = models.CharField(max_length=50, null=True, blank=True)
     turnover_type = models.CharField(max_length=50, null=True, blank=True)

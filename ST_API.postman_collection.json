@@ -99,7 +99,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"match_time\": 12345780,\r\n  \"game_time\": \"12:34:56\",\r\n  \"start_game\": \"Team A vs Team B\",\r\n  \"end_game\": \"End of regulation\",\r\n  \"quarter\": \"Q3\",\r\n  \"tag\": \"two-pointer\",\r\n  \"shot_type\": \"Jump shot\",\r\n  \"made_assist\": \"yes\",\r\n  \"sjn\": \"23\",\r\n  \"made_sloc\": {\"x\": 10, \"y\": 15},\r\n  \"made_ajn\": \"11\",\r\n  \"miss_type\": \"Layup\",\r\n  \"reb_type\": \"Offensive\",\r\n  \"miss_off_jn\": \"32\",\r\n  \"miss_off_loc\": {\"x\": 20, \"y\": 25},\r\n  \"miss_def_jn\": \"5\",\r\n  \"miss_def_loc\": {\"x\": 30, \"y\": 35},\r\n  \"foul_type\": \"Personal\",\r\n  \"shot_foul\": \"Shooting foul\",\r\n  \"made_wf_sjn\": \"23\",\r\n  \"made_wf_sloc\": {\"x\": 40, \"y\": 45},\r\n  \"made_wf_ajn\": \"10\",\r\n  \"miss_wf_assist\": \"yes\",\r\n  \"miss_wf_sloc\": {\"x\": 50, \"y\": 55},\r\n  \"miss_wf_djn\": \"7\",\r\n  \"miss_wf_dloc\": {\"x\": 60, \"y\": 65},\r\n  \"player_in_jn\": \"14\",\r\n  \"player_out_jn\": \"32\",\r\n  \"turnover_type\": \"Traveling\"\r\n}",
+					"raw": "{\r\n        \"match_time\": 2,\r\n        \"game_time\": \"12:10:00\",\r\n        \"start_game\": \"Team A\",\r\n        \"end_game\": \"Team B\",\r\n        \"quarter\": \"Q1\",\r\n        \"tag\": \"Tag1\",\r\n        \"shot\": \"Shot1\",\r\n        \"shot_type\": \"Type1\",\r\n        \"sjn\": \"1\",\r\n        \"sloc\": {\"x\": 10, \"y\": 20},\r\n        \"djn\": \"Defender1\",\r\n        \"dloc\": {\"x\": 30, \"y\": 40},\r\n        \"assist\": \"Player2\",\r\n        \"ajn\": \"Player2\",\r\n        \"miss_type\": \"Type2\",\r\n        \"reb_type\": \"Type3\",\r\n        \"foul_type\": \"Type4\",\r\n        \"shot_foul\": \"ShotFoul1\",\r\n        \"player_in_jn\": \"Player3\",\r\n        \"player_out_jn\": \"Player4\",\r\n        \"turnover_type\": \"Type5\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -150,7 +150,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/?tag=Three-pointer&shot_type=Jump&made_sjn=23&quarter=Q4&quarter=Q3",
+					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/?sjn=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -169,23 +169,27 @@
 					"query": [
 						{
 							"key": "tag",
-							"value": "Three-pointer"
+							"value": "Three-pointer",
+							"disabled": true
 						},
 						{
 							"key": "shot_type",
-							"value": "Jump"
+							"value": "Jump",
+							"disabled": true
 						},
 						{
-							"key": "made_sjn",
-							"value": "23"
-						},
-						{
-							"key": "quarter",
-							"value": "Q4"
+							"key": "sjn",
+							"value": "1"
 						},
 						{
 							"key": "quarter",
-							"value": "Q3"
+							"value": "Q4",
+							"disabled": true
+						},
+						{
+							"key": "quarter",
+							"value": "Q3",
+							"disabled": true
 						}
 					]
 				}
@@ -205,7 +209,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"match_time\": 1234567890\r\n}",
+					"raw": "{\r\n    \"match_time\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -246,7 +250,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"match_time\": 12345780,\r\n  \"game_time\": \"12:34:56\",\r\n  \"start_game\": \"Team A vs Team B\",\r\n  \"end_game\": \"End of regulation\",\r\n  \"quarter\": \"Q3\",\r\n  \"tag\": \"two-pointer\",\r\n  \"shot_type\": \"Jump shot\",\r\n  \"made_assist\": \"yes\",\r\n  \"sjn\": \"23\",\r\n  \"made_sloc\": {\"x\": 10, \"y\": 15},\r\n  \"made_ajn\": \"11\",\r\n  \"miss_type\": \"Layup\",\r\n  \"reb_type\": \"Offensive\",\r\n  \"miss_off_jn\": \"32\",\r\n  \"miss_off_loc\": {\"x\": 20, \"y\": 25},\r\n  \"miss_def_jn\": \"5\",\r\n  \"miss_def_loc\": {\"x\": 30, \"y\": 35},\r\n  \"foul_type\": \"Personal\",\r\n  \"shot_foul\": \"Shooting foul\",\r\n  \"made_wf_sjn\": \"23\",\r\n  \"made_wf_sloc\": {\"x\": 40, \"y\": 45},\r\n  \"made_wf_ajn\": \"10\",\r\n  \"miss_wf_assist\": \"yes\",\r\n  \"miss_wf_sloc\": {\"x\": 50, \"y\": 55},\r\n  \"miss_wf_djn\": \"7\",\r\n  \"miss_wf_dloc\": {\"x\": 60, \"y\": 65},\r\n  \"player_in_jn\": \"14\",\r\n  \"player_out_jn\": \"32\",\r\n  \"turnover_type\": \"Traveling\"\r\n}",
+					"raw": "{\r\n  \"match_time\": 1,\r\n        \"game_time\": \"12:00:00\",\r\n        \"start_game\": \"Team A\",\r\n        \"end_game\": \"Team B\",\r\n        \"quarter\": \"Q1\",\r\n        \"tag\": \"Tag1\",\r\n        \"shot\": \"Shot1\",\r\n        \"shot_type\": \"Type1\",\r\n        \"sjn\": \"Player1\",\r\n        \"sloc\": {\"x\": 10, \"y\": 20},\r\n        \"djn\": \"Defender1\",\r\n        \"dloc\": {\"x\": 30, \"y\": 40},\r\n        \"assist\": \"Player2\",\r\n        \"ajn\": \"Player2\",\r\n        \"miss_type\": \"Type2\",\r\n        \"reb_type\": \"Type3\",\r\n        \"foul_type\": \"Type4\",\r\n        \"shot_foul\": \"ShotFoul1\",\r\n        \"player_in_jn\": \"Player3\",\r\n        \"player_out_jn\": \"Player4\",\r\n        \"turnover_type\": \"Type5\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
