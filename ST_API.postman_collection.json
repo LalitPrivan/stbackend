@@ -150,7 +150,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/?sjn=1",
+					"raw": "http://127.0.0.1:8000/api/match/TeamA/fetch/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -176,10 +176,6 @@
 							"key": "shot_type",
 							"value": "Jump",
 							"disabled": true
-						},
-						{
-							"key": "sjn",
-							"value": "1"
 						},
 						{
 							"key": "quarter",
@@ -232,6 +228,53 @@
 						"TeamA",
 						"delete",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TeamA_update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "       { \"match_time\": 2,\r\n        \"game_time\": \"12:10:00\",\r\n        \"start_game\": \"Lavda A\",\r\n        \"end_game\": \"Team B\",\r\n        \"quarter\": \"Q1\",\r\n        \"tag\": \"Tag1\",\r\n        \"shot\": \"Shot1\",\r\n        \"shot_type\": \"Type1\",\r\n        \"sjn\": \"1\",\r\n        \"sloc\": {\r\n            \"x\": 10,\r\n            \"y\": 20\r\n        },\r\n        \"djn\": \"Defender1\",\r\n        \"dloc\": {\r\n            \"x\": 30,\r\n            \"y\": 40\r\n        },\r\n        \"assist\": \"Player2\",\r\n        \"ajn\": \"Player2\",\r\n        \"miss_type\": \"Type2\",\r\n        \"reb_type\": \"Type3\",\r\n        \"foul_type\": \"Type4\",\r\n        \"shot_foul\": \"ShotFoul1\",\r\n        \"player_in_jn\": \"Player3\",\r\n        \"player_out_jn\": \"Player4\",\r\n        \"turnover_type\": \"Type5\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/match/TeamA/update/?match_time=3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"match",
+						"TeamA",
+						"update",
+						""
+					],
+					"query": [
+						{
+							"key": "match_time",
+							"value": "3"
+						}
 					]
 				}
 			},
@@ -330,7 +373,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/?quarter=Q4",
+					"raw": "http://127.0.0.1:8000/api/match/TeamB/fetch/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -364,7 +407,8 @@
 						},
 						{
 							"key": "quarter",
-							"value": "Q4"
+							"value": "Q4",
+							"disabled": true
 						},
 						{
 							"key": "tag",
@@ -375,6 +419,53 @@
 							"key": "quarter",
 							"value": "Q3",
 							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TeamB_update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "       { \"match_time\": 2,\r\n        \"game_time\": \"12:10:00\",\r\n        \"start_game\": \"Lavda A\",\r\n        \"end_game\": \"Team B\",\r\n        \"quarter\": \"Q1\",\r\n        \"tag\": \"Tag1\",\r\n        \"shot\": \"Shot1\",\r\n        \"shot_type\": \"Type1\",\r\n        \"sjn\": \"1\",\r\n        \"sloc\": {\r\n            \"x\": 10,\r\n            \"y\": 20\r\n        },\r\n        \"djn\": \"Defender1\",\r\n        \"dloc\": {\r\n            \"x\": 30,\r\n            \"y\": 40\r\n        },\r\n        \"assist\": \"Player2\",\r\n        \"ajn\": \"Player2\",\r\n        \"miss_type\": \"Type2\",\r\n        \"reb_type\": \"Type3\",\r\n        \"foul_type\": \"Type4\",\r\n        \"shot_foul\": \"ShotFoul1\",\r\n        \"player_in_jn\": \"Player3\",\r\n        \"player_out_jn\": \"Player4\",\r\n        \"turnover_type\": \"Type5\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/match/TeamB/update/?match_time=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"match",
+						"TeamB",
+						"update",
+						""
+					],
+					"query": [
+						{
+							"key": "match_time",
+							"value": "1"
 						}
 					]
 				}
