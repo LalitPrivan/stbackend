@@ -13,10 +13,10 @@ class TeamA(models.Model):
     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     djn = models.CharField(max_length=50, null=True, blank=True) 
     dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    or_sjn = models.CharField(max_length=50, null=True, blank=True) 
-    dr_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    dr_sjn = models.CharField(max_length=50, null=True, blank=True) 
-    or_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    or_jn = models.CharField(max_length=50, null=True, blank=True) 
+    or_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    dr_jn = models.CharField(max_length=50, null=True, blank=True) 
+    dr_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     assist = models.CharField(max_length=50, null=True, blank=True)
     ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
@@ -26,6 +26,7 @@ class TeamA(models.Model):
     player_in_jn = models.CharField(max_length=50, null=True, blank=True)
     player_out_jn = models.CharField(max_length=50, null=True, blank=True)
     turnover_type = models.CharField(max_length=50, null=True, blank=True)
+
 
 
     def __str__(self):
@@ -44,10 +45,10 @@ class TeamB(models.Model):
     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     djn = models.CharField(max_length=50, null=True, blank=True) 
     dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    or_sjn = models.CharField(max_length=50, null=True, blank=True) 
-    dr_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    dr_sjn = models.CharField(max_length=50, null=True, blank=True) 
-    or_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    or_jn = models.CharField(max_length=50, null=True, blank=True) 
+    or_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    dr_jn = models.CharField(max_length=50, null=True, blank=True) 
+    dr_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     assist = models.CharField(max_length=50, null=True, blank=True)
     ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
