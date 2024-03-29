@@ -13,6 +13,10 @@ class TeamA(models.Model):
     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     djn = models.CharField(max_length=50, null=True, blank=True) 
     dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    or_sjn = models.CharField(max_length=50, null=True, blank=True) 
+    dr_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    dr_sjn = models.CharField(max_length=50, null=True, blank=True) 
+    or_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     assist = models.CharField(max_length=50, null=True, blank=True)
     ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
@@ -40,6 +44,10 @@ class TeamB(models.Model):
     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     djn = models.CharField(max_length=50, null=True, blank=True) 
     dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    or_sjn = models.CharField(max_length=50, null=True, blank=True) 
+    dr_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+    dr_sjn = models.CharField(max_length=50, null=True, blank=True) 
+    or_sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     assist = models.CharField(max_length=50, null=True, blank=True)
     ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)

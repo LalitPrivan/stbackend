@@ -27,7 +27,7 @@ class TeamACreateUpadateView(APIView):
 class TeamAFetchView(APIView):
     def get(self, request, format=None):
         # Get query parameters
-        filter_params = [
+        filter_params =   [
             "match_time",
             "quarter",
             "tag",
