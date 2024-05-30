@@ -6,17 +6,23 @@ from .models import TeamA, TeamB
 from .serializers import TeamASerializer, TeamBSerializer
 
 
-# TeamA Insert
+# TeamA Insert and update
 class TeamACreateUpadateView(APIView):
     def post(self, request, format=None):
-        match_time = request.data.get("match_time")
+        data = request.data.copy()  
+        value_mapping = {"Made1": "Made", "Miss1": "Miss", "Mades": "Made"}
+
+        if data.get("shot") in value_mapping:
+            data["shot"] = value_mapping[data["shot"]]
+
+        match_time = data.get("match_time")
 
         existing_entry = TeamA.objects.filter(match_time=match_time).first()
 
         if existing_entry:
             existing_entry.delete()
 
-        serializer = TeamASerializer(data=request.data)
+        serializer = TeamASerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -114,21 +120,24 @@ class TeamAUpdateView(APIView):
 # TeamB Insert and update
 class TeamBCreateUpadateView(APIView):
     def post(self, request, format=None):
-        match_time = request.data.get("match_time")
+        data = request.data.copy()  
+        value_mapping = {"Made1": "Made", "Miss1": "Miss", "Mades": "Made"}
+
+        if data.get("shot") in value_mapping:
+            data["shot"] = value_mapping[data["shot"]]
+
+        match_time = data.get("match_time")
 
         existing_entry = TeamB.objects.filter(match_time=match_time).first()
 
         if existing_entry:
             existing_entry.delete()
 
-        serializer = TeamBSerializer(data=request.data)
+        serializer = TeamBSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
 
 # TeamB fetch data with filter
 class TeamBFetchView(APIView):

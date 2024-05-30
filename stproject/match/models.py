@@ -1,8 +1,8 @@
 from django.db import models
-
 class TeamA(models.Model):
+    # match_id = models.ForeignKey('annotation.Matches', on_delete=models.CASCADE, related_name='team_a_matches')
     match_time = models.BigIntegerField(primary_key = True)
-    game_time = models.TimeField(unique=False)
+    game_time = models.TimeField(unique=False, null=True, blank=True)
     start_game = models.CharField(max_length=50, null=True, blank=True)
     end_game = models.CharField(max_length=50, null=True, blank=True)
     quarter = models.CharField(max_length=50, null=True, blank=True)
@@ -13,19 +13,14 @@ class TeamA(models.Model):
     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     djn = models.CharField(max_length=50, null=True, blank=True) 
     dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    or_jn = models.CharField(max_length=50, null=True, blank=True) 
-    or_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    dr_jn = models.CharField(max_length=50, null=True, blank=True) 
-    dr_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    assist = models.CharField(max_length=50, null=True, blank=True)
+    jb_win_jn = models.CharField(max_length=50, null=True, blank=True)
+    jb_lose_jn = models.CharField(max_length=50, null=True, blank=True)
     ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
-    reb_type = models.CharField(max_length=50, null=True, blank=True)
-    foul_type = models.CharField(max_length=50, null=True, blank=True)
-    shot_foul = models.CharField(max_length=50, null=True, blank=True)
+    foul_tag = models.CharField(max_length=50, null=True, blank=True)
     player_in_jn = models.CharField(max_length=50, null=True, blank=True)
     player_out_jn = models.CharField(max_length=50, null=True, blank=True)
-    turnover_type = models.CharField(max_length=50, null=True, blank=True)
+    rft_type = models.CharField(max_length=50, null=True, blank=True)
 
 
 
@@ -33,8 +28,9 @@ class TeamA(models.Model):
         return str(self.match_time)
     
 class TeamB(models.Model):
+    # match_id = models.ForeignKey('annotation.Matches', on_delete=models.CASCADE, related_name='team_b_matches')
     match_time = models.BigIntegerField(primary_key = True)
-    game_time = models.TimeField(unique=False)
+    game_time = models.TimeField(unique=False, null=True, blank=True)
     start_game = models.CharField(max_length=50, null=True, blank=True)
     end_game = models.CharField(max_length=50, null=True, blank=True)
     quarter = models.CharField(max_length=50, null=True, blank=True)
@@ -45,24 +41,87 @@ class TeamB(models.Model):
     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
     djn = models.CharField(max_length=50, null=True, blank=True) 
     dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    or_jn = models.CharField(max_length=50, null=True, blank=True) 
-    or_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    dr_jn = models.CharField(max_length=50, null=True, blank=True) 
-    dr_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
-    assist = models.CharField(max_length=50, null=True, blank=True)
+    jb_win_jn = models.CharField(max_length=50, null=True, blank=True)
+    jb_lose_jn = models.CharField(max_length=50, null=True, blank=True)
     ajn = models.CharField(max_length=50, null=True, blank=True)
     miss_type = models.CharField(max_length=50, null=True, blank=True)
-    reb_type = models.CharField(max_length=50, null=True, blank=True)
-    foul_type = models.CharField(max_length=50, null=True, blank=True)
-    shot_foul = models.CharField(max_length=50, null=True, blank=True)
+    foul_tag = models.CharField(max_length=50, null=True, blank=True)
     player_in_jn = models.CharField(max_length=50, null=True, blank=True)
     player_out_jn = models.CharField(max_length=50, null=True, blank=True)
-    turnover_type = models.CharField(max_length=50, null=True, blank=True)
-
+    rft_type = models.CharField(max_length=50, null=True, blank=True)
 
 
     def __str__(self):
         return str(self.match_time)
+
+# from django.db import models
+# class TeamA(models.Model):
+#     match_id = models.ForeignKey('annotation.Matches', on_delete=models.CASCADE, related_name='team_a_matches')
+#     match_time = models.BigIntegerField(primary_key = True)
+#     game_time = models.TimeField(unique=False, null=True, blank=True)
+#     start_game = models.CharField(max_length=50, null=True, blank=True)
+#     end_game = models.CharField(max_length=50, null=True, blank=True)
+#     quarter = models.CharField(max_length=50, null=True, blank=True)
+#     tag = models.CharField(max_length=50, null=True, blank=True)
+#     shot = models.CharField(max_length=50, null=True, blank=True)
+#     shot_type = models.CharField(max_length=50, null=True, blank=True) 
+#     sjn = models.CharField(max_length=50, null=True, blank=True) 
+#     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+#     djn = models.CharField(max_length=50, null=True, blank=True) 
+#     dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+#     or_jn = models.CharField(max_length=50, null=True, blank=True) 
+#     dr_jn = models.CharField(max_length=50, null=True, blank=True) 
+#     jb_win_jn = models.CharField(max_length=50, null=True, blank=True)
+#     jb_lose_jn = models.CharField(max_length=50, null=True, blank=True)
+#     assist = models.CharField(max_length=50, null=True, blank=True)
+#     ajn = models.CharField(max_length=50, null=True, blank=True)
+#     miss_type = models.CharField(max_length=50, null=True, blank=True)
+#     reb_type = models.CharField(max_length=50, null=True, blank=True)
+#     foul_type = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul = models.CharField(max_length=50, null=True, blank=True)
+#     player_in_jn = models.CharField(max_length=50, null=True, blank=True)
+#     player_out_jn = models.CharField(max_length=50, null=True, blank=True)
+#     turnover_type = models.CharField(max_length=50, null=True, blank=True)
+#     # or_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+#     # dr_loc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+
+
+
+#     def __str__(self):
+#         return str(self.match_time)
+    
+# class TeamB(models.Model):
+#     match_id = models.ForeignKey('annotation.Matches', on_delete=models.CASCADE, related_name='team_b_matches')
+#     match_time = models.BigIntegerField(primary_key = True)
+#     game_time = models.TimeField(unique=False, null=True, blank=True)
+#     start_game = models.CharField(max_length=50, null=True, blank=True)
+#     end_game = models.CharField(max_length=50, null=True, blank=True)
+#     quarter = models.CharField(max_length=50, null=True, blank=True)
+#     tag = models.CharField(max_length=50, null=True, blank=True)
+#     shot = models.CharField(max_length=50, null=True, blank=True)
+#     shot_type = models.CharField(max_length=50, null=True, blank=True) 
+#     sjn = models.CharField(max_length=50, null=True, blank=True) 
+#     sloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+#     djn = models.CharField(max_length=50, null=True, blank=True) 
+#     dloc = models.JSONField(null=True, blank=True)  # Single field for (x, y) coordinates for miss and made
+#     or_jn = models.CharField(max_length=50, null=True, blank=True) 
+#     dr_jn = models.CharField(max_length=50, null=True, blank=True) 
+#     jb_win_jn = models.CharField(max_length=50, null=True, blank=True)
+#     jb_lose_jn = models.CharField(max_length=50, null=True, blank=True)
+#     assist = models.CharField(max_length=50, null=True, blank=True)
+#     ajn = models.CharField(max_length=50, null=True, blank=True)
+#     miss_type = models.CharField(max_length=50, null=True, blank=True)
+#     reb_type = models.CharField(max_length=50, null=True, blank=True)
+#     foul_type = models.CharField(max_length=50, null=True, blank=True)
+#     shot_foul = models.CharField(max_length=50, null=True, blank=True)
+#     player_in_jn = models.CharField(max_length=50, null=True, blank=True)
+#     player_out_jn = models.CharField(max_length=50, null=True, blank=True)
+#     turnover_type = models.CharField(max_length=50, null=True, blank=True)
+
+
+
+#     def __str__(self):
+#         return str(self.match_time)
     
 
 # class TeamA(models.Model):
