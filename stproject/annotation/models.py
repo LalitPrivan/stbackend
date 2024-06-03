@@ -7,9 +7,10 @@ class Matches(models.Model):
     team_a_color = models.CharField(max_length=100, default='#000000')
     team_b_name = models.CharField(max_length=100)
     team_b_color = models.CharField(max_length=100, default='#000000')
-    video_link = models.URLField()
+    video_link = models.URLField(unique=True)
     team_a_players = models.JSONField(null=True, blank=True)
     team_b_players = models.JSONField(null=True, blank=True)
+    game_type= models.CharField(max_length=100,null=True, blank=True)
     # team_a_first_five = models.JSONField(null=True, blank=True)
     # team_b_first_five = models.JSONField(null=True, blank=True)
 

@@ -64,6 +64,18 @@ class DeleteMatch(APIView):
                 {"message": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
+class RetrieveMatch(APIView):
+    def get(self, request, format=None):
+        video_link = request.query_params.get('video_link')
+        if not video_link:
+            return Response({"message": "video_link parameter is required"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            match = Matches.objects.get(video_link=video_link)
+            serializer = MatchSerializer(match)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Matches.DoesNotExist:
+            return Response({"message": "No data found"}, status=status.HTTP_404_NOT_FOUND)
 
 
 # class MatchView(APIView):
